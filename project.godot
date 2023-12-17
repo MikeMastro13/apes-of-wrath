@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Survivors Clone"
+config/name="Apes of Wrath"
 run/main_scene="res://TitleScreen/menu.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 config/icon="res://icon.svg"
@@ -21,10 +21,9 @@ UpgradeDb="*res://Utility/upgrade_db.tscn"
 
 [display]
 
-window/size/viewport_width=640
-window/size/viewport_height=360
-window/size/mode=3
-window/size/borderless=true
+window/size/viewport_width=480
+window/size/viewport_height=270
+window/size/resizable=false
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"

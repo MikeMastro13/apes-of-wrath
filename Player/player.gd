@@ -53,7 +53,8 @@ var javelin_level = 0
 var enemy_close = []
 
 
-@onready var sprite = $Sprite2D
+@onready var animated_sprite = $AnimatedSprite2D
+@onready var animation_player = $AnimationPlayer
 @onready var walkTimer = get_node("%walkTimer")
 
 #GUI
@@ -91,17 +92,14 @@ func movement():
 	var y_mov = Input.get_action_strength("down") - Input.get_action_strength("up")
 	var mov = Vector2(x_mov,y_mov)
 	if mov.x > 0:
-		sprite.flip_h = true
+		animated_sprite.flip_h = false
 	elif mov.x < 0:
-		sprite.flip_h = false
+		animated_sprite.flip_h = true
 
 	if mov != Vector2.ZERO:
 		last_movement = mov
 		if walkTimer.is_stopped():
-			if sprite.frame >= sprite.hframes - 1:
-				sprite.frame = 0
-			else:
-				sprite.frame += 1
+			animation_player.play("move")
 			walkTimer.start()
 	
 	velocity = mov.normalized()*movement_speed
@@ -234,7 +232,7 @@ func levelup():
 	sndLevelUp.play()
 	lblLevel.text = str("Level: ",experience_level)
 	var tween = levelPanel.create_tween()
-	tween.tween_property(levelPanel,"position",Vector2(220,50),0.2).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN)
+	tween.tween_property(levelPanel,"position",Vector2(144,48),0.2).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN)
 	tween.play()
 	levelPanel.visible = true
 	var options = 0

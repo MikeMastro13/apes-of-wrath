@@ -1,17 +1,142 @@
-[gd_scene load_steps=18 format=3 uid="uid://dncgepmkc4jf4"]
+[gd_scene load_steps=31 format=3 uid="uid://dncgepmkc4jf4"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_37q80"]
-[ext_resource type="Texture2D" uid="uid://doa3scrwgj2oq" path="res://Textures/Player/player_sprite.png" id="1_jefax"]
+[ext_resource type="Texture2D" uid="uid://cjugjtgsrmblr" path="res://assets/sprites/characters/gorilla/gorilla.png" id="2_y35wk"]
 [ext_resource type="PackedScene" uid="uid://xy3cvpwdy828" path="res://Utility/hurt_box.tscn" id="3_gs51i"]
-[ext_resource type="Texture2D" uid="uid://dx7xx6vfahxlq" path="res://Textures/GUI/exp_background.png" id="4_pbpj5"]
-[ext_resource type="Texture2D" uid="uid://dlx33roiu0vlj" path="res://Textures/GUI/exp_progress.png" id="5_5ive2"]
-[ext_resource type="FontFile" uid="uid://cb4e8g30xxp5u" path="res://Font/tenderness.otf" id="6_okx7u"]
+[ext_resource type="Texture2D" uid="uid://brba7ll4hsydx" path="res://assets/sprites/ui/experience_bar.png" id="4_byfyo"]
+[ext_resource type="Texture2D" uid="uid://dbj7i0xcaat0b" path="res://assets/sprites/ui/experience_progress_bar.png" id="5_cmnyh"]
+[ext_resource type="FontFile" uid="uid://dj0yrm80ndniv" path="res://assets/fonts/m5x7.ttf" id="6_0gfom"]
+[ext_resource type="Texture2D" uid="uid://c10sob36ia5qp" path="res://assets/sprites/ui/healthbar.png" id="7_obbnq"]
 [ext_resource type="AudioStream" uid="uid://ul8hunj8tl2t" path="res://Audio/SoundEffect/levelup.ogg" id="7_wl7d2"]
-[ext_resource type="Texture2D" uid="uid://cj6a5rhwov14" path="res://Textures/GUI/healthbar.png" id="8_flesq"]
-[ext_resource type="Texture2D" uid="uid://da53mspvqfxq4" path="res://Textures/GUI/health.png" id="9_uker1"]
+[ext_resource type="Texture2D" uid="uid://l0u4i58emqmc" path="res://assets/sprites/ui/progress.png" id="8_pqpqv"]
 [ext_resource type="AudioStream" uid="uid://bnv76nm5171dn" path="res://Audio/SoundEffect/Victory.wav" id="10_rwm3p"]
 [ext_resource type="AudioStream" uid="uid://ca6physj6mqei" path="res://Audio/SoundEffect/Lose.ogg" id="11_28kfi"]
 [ext_resource type="PackedScene" uid="uid://b7c7gsdx2rkjm" path="res://Utility/basic_button.tscn" id="12_i8esf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81vju"]
+atlas = ExtResource("2_y35wk")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g83pu"]
+atlas = ExtResource("2_y35wk")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_874gl"]
+atlas = ExtResource("2_y35wk")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ixp03"]
+atlas = ExtResource("2_y35wk")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqtm4"]
+atlas = ExtResource("2_y35wk")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmwf0"]
+atlas = ExtResource("2_y35wk")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2rg3"]
+atlas = ExtResource("2_y35wk")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tp6vo"]
+atlas = ExtResource("2_y35wk")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g64ox"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81vju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g83pu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_874gl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ixp03")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqtm4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmwf0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2rg3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tp6vo")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_b7p1m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_imym6"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_xr30g"]
+resource_name = "move"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wryxd"]
+_data = {
+"RESET": SubResource("Animation_b7p1m"),
+"idle": SubResource("Animation_imym6"),
+"move": SubResource("Animation_xr30g")
+}
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nffdp"]
 radius = 4.0
@@ -32,9 +157,14 @@ radius = 50.0
 motion_mode = 1
 script = ExtResource("1_37q80")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_jefax")
-hframes = 2
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_g64ox")
+animation = &"idle"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wryxd")
+}
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -104,56 +234,61 @@ shape = SubResource("CircleShape2D_6vwp8")
 [node name="GUI" type="Control" parent="GUILayer"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 640.0
-offset_bottom = 360.0
+offset_right = 480.0
+offset_bottom = 272.0
 
 [node name="ExperienceBar" type="TextureProgressBar" parent="GUILayer/GUI"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_right = 640.0
-offset_bottom = 40.0
-texture_under = ExtResource("4_pbpj5")
-texture_progress = ExtResource("5_5ive2")
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 478.0
+offset_bottom = 14.0
+value = 4.0
+texture_under = ExtResource("4_byfyo")
+texture_progress = ExtResource("5_cmnyh")
+texture_progress_offset = Vector2(1, 1)
+tint_progress = Color(0.45098, 0.745098, 0.827451, 1)
 
 [node name="lbl_level" type="Label" parent="GUILayer/GUI/ExperienceBar"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 540.0
-offset_right = 640.0
-offset_bottom = 20.0
-theme_override_fonts/font = ExtResource("6_okx7u")
+offset_left = 406.0
+offset_right = 478.0
+offset_bottom = 16.0
+theme_override_fonts/font = ExtResource("6_0gfom")
 theme_override_font_sizes/font_size = 16
 text = "Level: 1"
 horizontal_alignment = 1
-vertical_alignment = 2
+vertical_alignment = 1
 
 [node name="HealthBar" type="TextureProgressBar" parent="GUILayer/GUI"]
 unique_name_in_owner = true
-self_modulate = Color(1, 1, 1, 0.392157)
 layout_mode = 0
-offset_left = 304.0
-offset_top = 200.0
-offset_right = 336.0
-offset_bottom = 208.0
-value = 50.0
-texture_over = ExtResource("8_flesq")
-texture_progress = ExtResource("9_uker1")
+offset_left = 216.0
+offset_top = 112.0
+offset_right = 264.0
+offset_bottom = 120.0
+value = 4.0
+texture_over = ExtResource("7_obbnq")
+texture_progress = ExtResource("8_pqpqv")
+tint_progress = Color(0.658824, 0.792157, 0.345098, 1)
 
 [node name="LevelUp" type="Panel" parent="GUILayer/GUI"]
 unique_name_in_owner = true
 process_mode = 2
 visible = false
 layout_mode = 0
-offset_left = 800.0
-offset_top = 50.0
-offset_right = 1000.0
-offset_bottom = 300.0
+offset_left = 144.0
+offset_top = 48.0
+offset_right = 336.0
+offset_bottom = 256.0
 
 [node name="lbl_LevelUP" type="Label" parent="GUILayer/GUI/LevelUp"]
 layout_mode = 0
 offset_right = 200.0
 offset_bottom = 50.0
-theme_override_fonts/font = ExtResource("6_okx7u")
+theme_override_fonts/font = ExtResource("6_0gfom")
 text = "Level Up !"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -161,10 +296,10 @@ vertical_alignment = 1
 [node name="UpgradeOptions" type="VBoxContainer" parent="GUILayer/GUI/LevelUp"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 10.0
-offset_top = 50.0
-offset_right = 190.0
-offset_bottom = 100.0
+offset_left = 8.0
+offset_top = 48.0
+offset_right = 184.0
+offset_bottom = 104.0
 
 [node name="snd_levelup" type="AudioStreamPlayer" parent="GUILayer/GUI/LevelUp"]
 unique_name_in_owner = true
@@ -176,17 +311,17 @@ unique_name_in_owner = true
 process_mode = 2
 visible = false
 layout_mode = 0
-offset_left = 230.0
-offset_top = -266.0
-offset_right = 430.0
-offset_bottom = -16.0
+offset_left = 144.0
+offset_top = 48.0
+offset_right = 336.0
+offset_bottom = 256.0
 
 [node name="lbl_Result" type="Label" parent="GUILayer/GUI/DeathPanel"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_right = 200.0
+offset_right = 192.0
 offset_bottom = 50.0
-theme_override_fonts/font = ExtResource("6_okx7u")
+theme_override_fonts/font = ExtResource("6_0gfom")
 text = "Result"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -202,22 +337,25 @@ stream = ExtResource("11_28kfi")
 volume_db = -10.0
 
 [node name="btn_menu" parent="GUILayer/GUI/DeathPanel" instance=ExtResource("12_i8esf")]
+custom_minimum_size = Vector2(0, 0)
 layout_mode = 0
-offset_left = 60.0
-offset_top = 200.0
-offset_right = 140.0
-offset_bottom = 230.0
+offset_left = 72.0
+offset_top = 168.0
+offset_right = 120.0
+offset_bottom = 192.0
+theme_override_fonts/font = ExtResource("6_0gfom")
+theme_override_font_sizes/font_size = 16
 text = "Menu"
 
 [node name="lblTimer" type="Label" parent="GUILayer/GUI"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 280.0
-offset_top = 20.0
-offset_right = 360.0
-offset_bottom = 44.0
-theme_override_fonts/font = ExtResource("6_okx7u")
-theme_override_font_sizes/font_size = 20
+offset_left = 200.0
+offset_top = 16.0
+offset_right = 280.0
+offset_bottom = 40.0
+theme_override_fonts/font = ExtResource("6_0gfom")
+theme_override_font_sizes/font_size = 16
 text = "00:00"
 horizontal_alignment = 1
 vertical_alignment = 1
