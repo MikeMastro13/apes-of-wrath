@@ -15,6 +15,7 @@ var collected_experience = 0
 var iceSpear = preload("res://Player/Attack/ice_spear.tscn")
 var tornado = preload("res://Player/Attack/tornado.tscn")
 var javelin = preload("res://Player/Attack/javelin.tscn")
+var gorillaFist = preload("res://Player/Attack/gorilla_fist.tscn")
 
 #AttackNodes
 @onready var iceSpearTimer = get_node("%IceSpearTimer")
@@ -22,6 +23,8 @@ var javelin = preload("res://Player/Attack/javelin.tscn")
 @onready var tornadoTimer = get_node("%TornadoTimer")
 @onready var tornadoAttackTimer = get_node("%TornadoAttackTimer")
 @onready var javelinBase = get_node("%JavelinBase")
+@onready var gorillaFistTimer = get_node("%GorillaFistTimer")
+@onready var gorillaFistAttackTimer = get_node("%GorillaFistAttackTimer")
 
 #UPGRADES
 var collected_upgrades = []
@@ -48,6 +51,11 @@ var tornado_level = 0
 var javelin_ammo = 0
 var javelin_level = 0
 
+# Gorilla Fist
+var fist_baseammo = 0
+var fist_ammo = 0
+var fist_attackspeed = 4.0
+var fist_level = 0
 
 #Enemy Related
 var enemy_close = []
@@ -80,6 +88,7 @@ signal playerdeath
 
 func _ready():
 	upgrade_character("icespear1")
+	upgrade_character("gorillafist1")
 	attack()
 	set_expbar(experience, calculate_experiencecap())
 	_on_hurt_box_hurt(0,0,0)
@@ -116,6 +125,10 @@ func attack():
 			tornadoTimer.start()
 	if javelin_level > 0:
 		spawn_javelin()
+	if fist_level > 0:
+		gorillaFistTimer.wait_time = fist_attackspeed * (1-spell_cooldown)
+		if gorillaFistTimer.is_stopped():
+			gorillaFistTimer.start()
 
 func _on_hurt_box_hurt(damage, _angle, _knockback):
 	hp -= clamp(damage-armor, 1.0, 999.0)
@@ -133,7 +146,6 @@ func _on_ice_spear_attack_timer_timeout():
 	if icespear_ammo > 0:
 		var icespear_attack = iceSpear.instantiate()
 		icespear_attack.position = position
-		icespear_attack.target = get_random_target()
 		icespear_attack.level = icespear_level
 		add_child(icespear_attack)
 		icespear_ammo -= 1
@@ -172,6 +184,23 @@ func spawn_javelin():
 	for i in get_javelins:
 		if i.has_method("update_javelin"):
 			i.update_javelin()
+			
+
+func _on_gorilla_fist_timer_timeout():
+	fist_ammo += fist_baseammo
+	gorillaFistAttackTimer.start()
+
+func _on_gorilla_fist_attack_timer_timeout():
+	if fist_ammo > 0:
+		var fist_attack = gorillaFist.instantiate()
+		fist_attack.position = position
+		fist_attack.level = fist_level
+		add_child(fist_attack)
+		fist_ammo -= 1
+		if fist_ammo > 0:
+			gorillaFistAttackTimer.start()
+		else:
+			gorillaFistAttackTimer.stop()
 
 func get_random_target():
 	if enemy_close.size() > 0:
@@ -254,9 +283,10 @@ func upgrade_character(upgrade):
 			icespear_baseammo += 1
 		"icespear3":
 			icespear_level = 3
+			icespear_baseammo += 1
 		"icespear4":
 			icespear_level = 4
-			icespear_baseammo += 2
+			icespear_baseammo += 1
 		"tornado1":
 			tornado_level = 1
 			tornado_baseammo += 1
@@ -278,6 +308,9 @@ func upgrade_character(upgrade):
 			javelin_level = 3
 		"javelin4":
 			javelin_level = 4
+		"gorillafist1","gorillafist2","gorillafist3","gorillafist4":
+			fist_level += 1
+			fist_baseammo += 1
 		"armor1","armor2","armor3","armor4":
 			armor += 1
 		"speed1","speed2","speed3","speed4":

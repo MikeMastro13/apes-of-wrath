@@ -1,24 +1,23 @@
 [gd_scene load_steps=5 format=3 uid="uid://b7c7gsdx2rkjm"]
 
-[ext_resource type="AudioStream" uid="uid://bwahs2mtjus02" path="res://Audio/GUI/hover.wav" id="1_2ggfj"]
-[ext_resource type="FontFile" uid="uid://cb4e8g30xxp5u" path="res://Font/tenderness.otf" id="1_5s5k8"]
+[ext_resource type="FontFile" uid="uid://dj0yrm80ndniv" path="res://assets/fonts/m5x7.ttf" id="1_rgc44"]
 [ext_resource type="Script" path="res://Utility/basic_button.gd" id="1_t2e60"]
-[ext_resource type="AudioStream" uid="uid://dobpqbspunihg" path="res://Audio/GUI/click.wav" id="2_jbqnc"]
+[ext_resource type="AudioStream" uid="uid://cxsjxfuja2i3r" path="res://assets/effects/button_hover.ogg" id="3_yvfcq"]
+[ext_resource type="AudioStream" uid="uid://cqthc5e7el3fq" path="res://assets/effects/button_select.ogg" id="4_htshm"]
 
 [node name="Button" type="Button"]
-custom_minimum_size = Vector2(80, 30)
 offset_right = 8.0
 offset_bottom = 8.0
-theme_override_fonts/font = ExtResource("1_5s5k8")
-theme_override_font_sizes/font_size = 20
+theme_override_fonts/font = ExtResource("1_rgc44")
+theme_override_font_sizes/font_size = 16
 text = "Example"
 script = ExtResource("1_t2e60")
 
 [node name="snd_hover" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("1_2ggfj")
+stream = ExtResource("3_yvfcq")
 
 [node name="snd_click" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_jbqnc")
+stream = ExtResource("4_htshm")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]

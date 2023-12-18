@@ -74,7 +74,6 @@ libraries = {
 }
 
 [node name="HurtBox" parent="." instance=ExtResource("3_gamcv")]
-visible = false
 collision_mask = 4
 HurtBoxType = 1
 
@@ -83,7 +82,6 @@ position = Vector2(-0.5, 0)
 shape = SubResource("RectangleShape2D_rborl")
 
 [node name="HitBox" parent="." instance=ExtResource("4_vdnsx")]
-visible = false
 collision_layer = 2
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]

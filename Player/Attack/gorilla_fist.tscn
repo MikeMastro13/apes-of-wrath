@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://ihq2a4mykpfr"]
+
+[ext_resource type="Script" path="res://Player/Attack/gorilla_fist.gd" id="1_bl74k"]
+[ext_resource type="Texture2D" uid="uid://bmilfy0wrdc6l" path="res://assets/sprites/attacks/gorilla_fist.png" id="2_gh2c8"]
+[ext_resource type="AudioStream" uid="uid://cl3g2vts3nyt0" path="res://Audio/SoundEffect/ice.wav" id="3_gjsnc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p4tiy"]
+size = Vector2(14.1421, 14.1421)
+
+[node name="GorillaFist" type="Area2D" groups=["attack"]]
+top_level = true
+scale = Vector2(0.1, 0.1)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_bl74k")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_gh2c8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8.9407e-07, 5.96046e-07)
+shape = SubResource("RectangleShape2D_p4tiy")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.75
+one_shot = true
+autostart = true
+
+[node name="snd_play" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_gjsnc")
+volume_db = -10.0
+pitch_scale = 5.0
+autoplay = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

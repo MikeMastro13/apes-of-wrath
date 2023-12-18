@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcyka5e06knff"]
+[gd_scene load_steps=7 format=3 uid="uid://dcyka5e06knff"]
 
 [ext_resource type="Script" path="res://TitleScreen/menu.gd" id="1_oi0p3"]
 [ext_resource type="FontFile" uid="uid://cb4e8g30xxp5u" path="res://Font/tenderness.otf" id="1_xdjxl"]
 [ext_resource type="Texture2D" uid="uid://b4skmnqrig1j4" path="res://assets/sprites/title/splash.png" id="2_1h7vq"]
 [ext_resource type="PackedScene" uid="uid://b7c7gsdx2rkjm" path="res://Utility/basic_button.tscn" id="3_kwsdd"]
 [ext_resource type="FontFile" uid="uid://dj0yrm80ndniv" path="res://assets/fonts/m5x7.ttf" id="5_y6o5k"]
+[ext_resource type="AudioStream" uid="uid://c2tb0m2lye36b" path="res://assets/music/monkey_funks.ogg" id="6_syew2"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -59,6 +60,12 @@ offset_bottom = 248.0
 theme_override_fonts/font = ExtResource("5_y6o5k")
 theme_override_font_sizes/font_size = 16
 text = "Exit"
+
+[node name="snd_Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("6_syew2")
+volume_db = -15.0
+autoplay = true
 
 [connection signal="click_end" from="btn_play" to="." method="_on_btn_play_click_end"]
 [connection signal="click_end" from="btn_exit" to="." method="_on_btn_exit_click_end"]

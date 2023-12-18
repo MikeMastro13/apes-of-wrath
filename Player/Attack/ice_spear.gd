@@ -14,7 +14,13 @@ var angle = Vector2.ZERO
 signal remove_from_array(object)
 
 func _ready():
-	angle = global_position.direction_to(target)
+	# angle = global_position.direction_to(target)
+	# TODO: Build out with player movement state
+	var player_velocity = player.velocity.normalized()
+	
+	
+	angle = player.last_movement
+		
 	rotation = angle.angle() + deg_to_rad(135)
 	match level:
 		1:
