@@ -15,9 +15,11 @@ script = ExtResource("1_t2e60")
 
 [node name="snd_hover" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_yvfcq")
+volume_db = -10.0
 
 [node name="snd_click" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_htshm")
+volume_db = -10.0
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="pressed" from="." to="." method="_on_pressed"]

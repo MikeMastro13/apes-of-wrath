@@ -4,7 +4,7 @@ extends CharacterBody2D
 var movement_speed = 40.0
 var hp = 80
 var maxhp = 80
-var last_movement = Vector2.UP
+var last_movement = Vector2.RIGHT
 var time = 0
 
 var experience = 0
@@ -110,6 +110,8 @@ func movement():
 		if walkTimer.is_stopped():
 			animation_player.play("move")
 			walkTimer.start()
+	else:
+		animation_player.play("idle")
 	
 	velocity = mov.normalized()*movement_speed
 	move_and_slide()
@@ -261,7 +263,7 @@ func levelup():
 	sndLevelUp.play()
 	lblLevel.text = str("Level: ",experience_level)
 	var tween = levelPanel.create_tween()
-	tween.tween_property(levelPanel,"position",Vector2(144,48),0.2).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN)
+	tween.tween_property(levelPanel,"position",Vector2(117,53),0.2).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN)
 	tween.play()
 	levelPanel.visible = true
 	var options = 0

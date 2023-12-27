@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dcyka5e06knff"]
+[gd_scene load_steps=6 format=3 uid="uid://dcyka5e06knff"]
 
 [ext_resource type="Script" path="res://TitleScreen/menu.gd" id="1_oi0p3"]
 [ext_resource type="FontFile" uid="uid://cb4e8g30xxp5u" path="res://Font/tenderness.otf" id="1_xdjxl"]
 [ext_resource type="Texture2D" uid="uid://b4skmnqrig1j4" path="res://assets/sprites/title/splash.png" id="2_1h7vq"]
 [ext_resource type="PackedScene" uid="uid://b7c7gsdx2rkjm" path="res://Utility/basic_button.tscn" id="3_kwsdd"]
-[ext_resource type="FontFile" uid="uid://dj0yrm80ndniv" path="res://assets/fonts/m5x7.ttf" id="5_y6o5k"]
 [ext_resource type="AudioStream" uid="uid://c2tb0m2lye36b" path="res://assets/music/monkey_funks.ogg" id="6_syew2"]
 
 [node name="Menu" type="Control"]
@@ -17,8 +16,8 @@ grow_vertical = 2
 script = ExtResource("1_oi0p3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(240.25, 136)
-scale = Vector2(0.998958, 1.00741)
+position = Vector2(160.25, 91.9998)
+scale = Vector2(0.665625, 0.681483)
 texture = ExtResource("2_1h7vq")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -40,25 +39,19 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="btn_play" parent="." instance=ExtResource("3_kwsdd")]
-custom_minimum_size = Vector2(0, 0)
 layout_mode = 0
-offset_left = 168.0
-offset_top = 224.0
-offset_right = 216.0
-offset_bottom = 248.0
-theme_override_fonts/font = ExtResource("5_y6o5k")
-theme_override_font_sizes/font_size = 16
+offset_left = 96.0
+offset_top = 144.0
+offset_right = 144.0
+offset_bottom = 168.0
 text = "Play"
 
 [node name="btn_exit" parent="." instance=ExtResource("3_kwsdd")]
-custom_minimum_size = Vector2(0, 0)
 layout_mode = 0
-offset_left = 240.0
-offset_top = 224.0
-offset_right = 288.0
-offset_bottom = 248.0
-theme_override_fonts/font = ExtResource("5_y6o5k")
-theme_override_font_sizes/font_size = 16
+offset_left = 176.0
+offset_top = 144.0
+offset_right = 224.0
+offset_bottom = 168.0
 text = "Exit"
 
 [node name="snd_Music" type="AudioStreamPlayer" parent="."]

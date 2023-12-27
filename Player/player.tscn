@@ -113,6 +113,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
 
 [sub_resource type="Animation" id="Animation_xr30g"]
 resource_name = "move"
@@ -129,6 +141,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"move"]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wryxd"]
@@ -159,7 +183,7 @@ script = ExtResource("1_37q80")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_g64ox")
-animation = &"idle"
+animation = &"move"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -167,6 +191,7 @@ libraries = {
 }
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.75, 0.75)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 3)
@@ -238,20 +263,22 @@ collision_mask = 8
 shape = SubResource("CircleShape2D_6vwp8")
 
 [node name="GUILayer" type="CanvasLayer" parent="."]
+scale = Vector2(0.75, 0.75)
+transform = Transform2D(0.75, 0, 0, 0.75, 0, 0)
 
 [node name="GUI" type="Control" parent="GUILayer"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 480.0
-offset_bottom = 272.0
+offset_right = 427.0
+offset_bottom = 245.0
 
 [node name="ExperienceBar" type="TextureProgressBar" parent="GUILayer/GUI"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 478.0
-offset_bottom = 14.0
+offset_left = 5.33333
+offset_top = 2.66667
+offset_right = 421.333
+offset_bottom = 18.6667
 value = 4.0
 texture_under = ExtResource("4_byfyo")
 texture_progress = ExtResource("5_cmnyh")
@@ -261,8 +288,8 @@ tint_progress = Color(0.45098, 0.745098, 0.827451, 1)
 [node name="lbl_level" type="Label" parent="GUILayer/GUI/ExperienceBar"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 406.0
-offset_right = 478.0
+offset_left = 346.667
+offset_right = 415.667
 offset_bottom = 16.0
 theme_override_fonts/font = ExtResource("6_0gfom")
 theme_override_font_sizes/font_size = 16
@@ -273,13 +300,14 @@ vertical_alignment = 1
 [node name="HealthBar" type="TextureProgressBar" parent="GUILayer/GUI"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 216.0
-offset_top = 112.0
-offset_right = 264.0
-offset_bottom = 120.0
+offset_left = 194.667
+offset_top = 96.0
+offset_right = 230.667
+offset_bottom = 104.0
 value = 4.0
 texture_over = ExtResource("7_obbnq")
 texture_progress = ExtResource("8_pqpqv")
+texture_progress_offset = Vector2(0, 1)
 tint_progress = Color(0.658824, 0.792157, 0.345098, 1)
 
 [node name="LevelUp" type="Panel" parent="GUILayer/GUI"]
@@ -287,14 +315,14 @@ unique_name_in_owner = true
 process_mode = 2
 visible = false
 layout_mode = 0
-offset_left = 144.0
-offset_top = 48.0
-offset_right = 336.0
-offset_bottom = 256.0
+offset_left = 117.0
+offset_top = 53.0
+offset_right = 309.0
+offset_bottom = 224.0
 
 [node name="lbl_LevelUP" type="Label" parent="GUILayer/GUI/LevelUp"]
 layout_mode = 0
-offset_right = 200.0
+offset_right = 192.0
 offset_bottom = 50.0
 theme_override_fonts/font = ExtResource("6_0gfom")
 text = "Level Up !"
@@ -345,23 +373,20 @@ stream = ExtResource("11_28kfi")
 volume_db = -10.0
 
 [node name="btn_menu" parent="GUILayer/GUI/DeathPanel" instance=ExtResource("12_i8esf")]
-custom_minimum_size = Vector2(0, 0)
 layout_mode = 0
 offset_left = 72.0
 offset_top = 168.0
 offset_right = 120.0
 offset_bottom = 192.0
-theme_override_fonts/font = ExtResource("6_0gfom")
-theme_override_font_sizes/font_size = 16
 text = "Menu"
 
 [node name="lblTimer" type="Label" parent="GUILayer/GUI"]
 unique_name_in_owner = true
 layout_mode = 0
-offset_left = 200.0
-offset_top = 16.0
-offset_right = 280.0
-offset_bottom = 40.0
+offset_left = 181.0
+offset_top = 21.0
+offset_right = 245.0
+offset_bottom = 45.0
 theme_override_fonts/font = ExtResource("6_0gfom")
 theme_override_font_sizes/font_size = 16
 text = "00:00"
@@ -373,7 +398,7 @@ unique_name_in_owner = true
 layout_mode = 0
 offset_left = 8.0
 offset_top = 24.0
-offset_right = 208.0
+offset_right = 120.0
 offset_bottom = 40.0
 columns = 10
 
@@ -382,7 +407,7 @@ unique_name_in_owner = true
 layout_mode = 0
 offset_left = 8.0
 offset_top = 40.0
-offset_right = 208.0
+offset_right = 120.0
 offset_bottom = 56.0
 columns = 10
 

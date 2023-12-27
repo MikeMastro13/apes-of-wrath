@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Player/Attack/ice_spear.gd" id="1_4el3j"]
 [ext_resource type="Texture2D" uid="uid://dqrs3rsn5l1ud" path="res://assets/sprites/attacks/hot_dog.png" id="2_j78lm"]
-[ext_resource type="AudioStream" uid="uid://cl3g2vts3nyt0" path="res://Audio/SoundEffect/ice.wav" id="3_esswn"]
+[ext_resource type="AudioStream" uid="uid://ctg4gidw6qmbm" path="res://assets/effects/hot_dog_hit_1.ogg" id="3_e4d46"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p4tiy"]
 size = Vector2(14.1421, 14.1421)
@@ -28,9 +28,8 @@ one_shot = true
 autostart = true
 
 [node name="snd_play" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_esswn")
+stream = ExtResource("3_e4d46")
 volume_db = -10.0
-pitch_scale = 5.0
 autoplay = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -15,3 +15,5 @@ res://Enemy/enemy_super.tscn
 res://Player/Attack/ice_spear.tscn
 res://Player/Attack/gorilla_fist.tscn
 res://Utility/basic_button.tscn
+res://Player/Attack/gorilla_fist.gd
+res://Player/player.gd

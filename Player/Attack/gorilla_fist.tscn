@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Player/Attack/gorilla_fist.gd" id="1_bl74k"]
 [ext_resource type="Texture2D" uid="uid://bmilfy0wrdc6l" path="res://assets/sprites/attacks/gorilla_fist.png" id="2_gh2c8"]
-[ext_resource type="AudioStream" uid="uid://cl3g2vts3nyt0" path="res://Audio/SoundEffect/ice.wav" id="3_gjsnc"]
+[ext_resource type="AudioStream" uid="uid://b1p80khkg523r" path="res://assets/effects/gorilla_grunt_1.ogg" id="3_6k6p7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p4tiy"]
 size = Vector2(14.1421, 14.1421)
@@ -27,9 +27,8 @@ one_shot = true
 autostart = true
 
 [node name="snd_play" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_gjsnc")
+stream = ExtResource("3_6k6p7")
 volume_db = -10.0
-pitch_scale = 5.0
 autoplay = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -5,12 +5,12 @@
 [ext_resource type="FontFile" uid="uid://dj0yrm80ndniv" path="res://assets/fonts/m5x7.ttf" id="3_df5iv"]
 
 [node name="ItemOption" type="ColorRect"]
-custom_minimum_size = Vector2(176, 48)
+custom_minimum_size = Vector2(160, 40)
 anchors_preset = -1
 anchor_right = 0.281
 anchor_bottom = 0.139
-offset_right = 41.12
-offset_bottom = 10.47
+offset_right = 70.08
+offset_bottom = 14.98
 color = Color(0.341176, 0.447059, 0.466667, 1)
 script = ExtResource("1_unejd")
 
@@ -18,14 +18,14 @@ script = ExtResource("1_unejd")
 layout_mode = 0
 offset_left = 2.0
 offset_top = 2.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_right = 14.0
+offset_bottom = 14.0
 color = Color(0, 0, 0, 1)
 
 [node name="ItemIcon" type="TextureRect" parent="ColorRect"]
 layout_mode = 0
-offset_right = 24.0
-offset_bottom = 24.0
+offset_right = 16.0
+offset_bottom = 16.0
 scale = Vector2(0.75, 0.75)
 texture = ExtResource("2_mu210")
 
@@ -33,18 +33,19 @@ texture = ExtResource("2_mu210")
 layout_mode = 0
 offset_left = 24.0
 offset_top = 2.0
-offset_right = 104.0
+offset_right = 120.0
 offset_bottom = 24.0
+scale = Vector2(0.5, 0.5)
 theme_override_fonts/font = ExtResource("3_df5iv")
 text = "Name"
 horizontal_alignment = 1
 
 [node name="lbl_description" type="Label" parent="."]
 layout_mode = 0
-offset_left = 4.0
-offset_top = 24.0
-offset_right = 348.0
-offset_bottom = 56.0
+offset_left = 8.0
+offset_top = 16.0
+offset_right = 296.0
+offset_bottom = 48.0
 scale = Vector2(0.5, 0.5)
 theme_override_fonts/font = ExtResource("3_df5iv")
 text = "Description of Item"
@@ -54,8 +55,9 @@ autowrap_mode = 3
 layout_mode = 0
 offset_left = 120.0
 offset_top = 3.0
-offset_right = 176.0
+offset_right = 184.0
 offset_bottom = 24.0
+scale = Vector2(0.5, 0.5)
 theme_override_fonts/font = ExtResource("3_df5iv")
 text = "Level: 1"
 
